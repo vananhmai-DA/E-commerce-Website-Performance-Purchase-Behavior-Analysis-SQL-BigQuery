@@ -76,6 +76,7 @@ In this project, the following wildcard table pattern is used to query multiple 
 
 ```sql
 `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+```
 
 ### Dataset Description
 
@@ -103,4 +104,3 @@ In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` a
 | `hits.product.productRevenue` | Product revenue, stored in micro-units |
 | `hits.product.productSKU` | Product SKU |
 | `hits.product.v2ProductName` | Product name |
-
