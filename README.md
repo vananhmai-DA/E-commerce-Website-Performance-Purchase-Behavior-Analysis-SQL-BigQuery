@@ -575,19 +575,18 @@ Insight: Cumulative revenue increased steadily from week 18 to week 31, reaching
 
 ## 4. Summary & Recommendations
 
-### Summary
+### Key Insights
 
-This project analyzed e-commerce website performance using SQL and BigQuery across traffic, conversion, customer behavior, device contribution, product funnel, and revenue trends.
-
-The main finding is that business performance was not driven by traffic volume alone. March 2017 had the strongest overall performance, while direct traffic and desktop users contributed the most revenue. However, DFA had the highest conversion rate, showing that traffic quality also matters.
-
-The analysis also showed that non-purchasers viewed more pages than purchasers, suggesting that some users were interested in products but did not complete a purchase.
+- March 2017 had the strongest performance, with the highest visits, pageviews, transactions, and purchase rate.
+- High traffic volume did not always mean high quality. Google had high visits but also a relatively high bounce rate, while DFA had the highest conversion rate.
+- Direct traffic generated the highest revenue, and desktop contributed most of the total revenue.
+- Non-purchasers viewed more pages than purchasers, suggesting that some users browsed products but did not complete a purchase.
+- Customers who bought “YouTube Men's Vintage Henley” also commonly purchased Google Sunglasses, showing a cross-selling opportunity.
 
 ### Recommendations
 
-- Evaluate traffic sources by conversion rate, bounce rate, and revenue, not only by visit volume.
-- Review high-bounce traffic sources and improve landing page relevance.
-- Improve the purchase journey for users who browse many pages but do not buy.
-- Review mobile and tablet performance because desktop generated most of the revenue.
-- Use cross-selling recommendations for products commonly purchased together.
-- Continue tracking the product funnel to identify where users drop off.
+- Evaluate traffic sources by bounce rate, conversion rate, and revenue, not only by visits.
+- Improve landing pages for high-bounce traffic sources.
+- Optimize the purchase journey for users who browse many pages but do not buy.
+- Review mobile and tablet experience because desktop generated most revenue.
+- Use product recommendations to increase cross-selling and average order value.
