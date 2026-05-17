@@ -1,3 +1,10 @@
+## Table of Contents
+
+- [1. Project Overview](#1-project-overview)
+- [2. Data Source & Dataset Description](#2-data-source--dataset-description)
+- [3. Main Analysis Process](#3-main-analysis-process)
+- [4. Summary & Recommendations](#4-summary--recommendations)
+
 ## 1. Project Overview
 
 ### Context
