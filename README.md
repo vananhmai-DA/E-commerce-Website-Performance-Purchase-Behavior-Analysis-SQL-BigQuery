@@ -77,3 +77,36 @@ In this project, the following wildcard table pattern is used to query multiple 
 ```sql
 `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
 
+### Dataset Description
+
+The dataset contains e-commerce website session data, including visitor information, session date, traffic source, device category, pageviews, bounces, transactions, product interactions, product quantity, and product revenue.
+
+The dataset includes both session-level fields and nested e-commerce fields.
+
+Session-level fields describe the overall session, such as visitor ID, date, traffic source, device category, pageviews, bounces, and transactions.
+
+Nested fields describe more detailed user interactions within each session. In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` are nested or repeated fields. Therefore, `UNNEST()` is used to access hit-level and product-level data for analysis.
+
+### Key Fields Used
+
+| Field Name | Description |
+|---|---|
+| `fullVisitorId` | Unique visitor ID |
+| `date` | Session date in `YYYYMMDD` format |
+| `totals` | A record field that contains aggregate values across the session |
+| `totals.bounces` | Bounce indicator. For a bounced session, the value is `1`; otherwise, it is `null` |
+| `totals.hits` | Total number of hits within the session |
+| `totals.pageviews` | Total number of pageviews within the session |
+| `totals.visits` | Number of sessions. The value is usually `1` for sessions with interaction events |
+| `totals.transactions` | Total number of e-commerce transactions within the session |
+| `trafficSource.source` | Source of website traffic, such as search engine, referring hostname, or UTM source |
+| `device.deviceCategory` | Device type, such as mobile, tablet, or desktop |
+| `hits` | A nested and repeated field that contains hit-level data within a session |
+| `hits.eCommerceAction` | A nested field that contains e-commerce actions during the session |
+| `hits.eCommerceAction.action_type` | E-commerce action type, such as product detail view, add-to-cart, checkout, or completed purchase |
+| `hits.product` | A nested field that contains product-level e-commerce data |
+| `hits.product.productQuantity` | Quantity of the product purchased |
+| `hits.product.productRevenue` | Product revenue, stored in micro-units |
+| `hits.product.productSKU` | Product SKU |
+| `hits.product.v2ProductName` | Product name |
+
