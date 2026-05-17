@@ -346,7 +346,7 @@ GROUP BY month;
 
 #### Query Result
 
-![Average Transactions per Purchasing User](images/Q6_avg_transactions_per_user.png))
+![Average Transactions per Purchasing User](images/Q6_avg_transactions_per_user.png)
 
 Insight: In July 2017, purchasing users made an average of about 4.16 transactions. This suggests that users who converted were not limited to one-time purchases and may have shown repeat purchasing behavior within the period.
 
