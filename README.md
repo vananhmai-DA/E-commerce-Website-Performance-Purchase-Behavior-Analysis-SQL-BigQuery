@@ -133,7 +133,7 @@ ORDER BY 1;
 
 #### Query Result
 
-![Monthly Website Traffic Overview](images/q01_monthly_website_traffic_overview.png)
+![Monthly Website Traffic Overview](images/Q1_monthly_website_traffic_overview.png)
 
 Insight: March 2017 showed the strongest performance among the three months, with the highest number of visits, pageviews, and transactions. Although February had lower visits and pageviews than January, transactions still increased slightly, suggesting that traffic volume was not the only factor affecting purchase performance.
 
