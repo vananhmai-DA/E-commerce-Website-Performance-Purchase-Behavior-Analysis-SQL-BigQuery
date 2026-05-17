@@ -570,18 +570,17 @@ Insight: Cumulative revenue increased steadily from week 18 to week 31, reaching
 
 ### Summary
 
-This project used SQL and BigQuery to analyze e-commerce website performance across traffic, engagement, conversion, product behavior, device contribution, and revenue trends.
+This project analyzed e-commerce website performance using SQL and BigQuery across traffic, conversion, customer behavior, device contribution, product funnel, and revenue trends.
 
-The analysis shows that traffic volume alone did not fully explain business performance. March 2017 had the strongest overall performance, while direct traffic and desktop users contributed the largest share of revenue. However, DFA achieved the highest conversion rate, showing that traffic quality should be evaluated together with traffic volume.
+The main finding is that business performance was not driven by traffic volume alone. March 2017 had the strongest overall performance, while direct traffic and desktop users contributed the most revenue. However, DFA had the highest conversion rate, showing that traffic quality also matters.
 
-Customer behavior also revealed opportunities for improvement. Non-purchasers viewed more pages than purchasers, suggesting that some users were interested in products but did not complete a purchase. The product funnel improved from January to March, indicating better movement from product view to add-to-cart and purchase.
+The analysis also showed that non-purchasers viewed more pages than purchasers, suggesting that some users were interested in products but did not complete a purchase.
 
 ### Recommendations
 
-- Evaluate marketing channels by bounce rate, conversion rate, and revenue contribution, not only by traffic volume.
+- Evaluate traffic sources by conversion rate, bounce rate, and revenue, not only by visit volume.
 - Review high-bounce traffic sources and improve landing page relevance.
-- Strengthen the purchase journey by improving product pages, calls to action, and checkout experience.
-- Review mobile performance because desktop contributed most of the revenue.
-- Use cross-selling recommendations for products that are commonly purchased together.
-- Continue monitoring product funnel metrics to identify where users drop off.
-- Track weekly revenue trends to better understand revenue fluctuations over time.
+- Improve the purchase journey for users who browse many pages but do not buy.
+- Review mobile and tablet performance because desktop generated most of the revenue.
+- Use cross-selling recommendations for products commonly purchased together.
+- Continue tracking the product funnel to identify where users drop off.
