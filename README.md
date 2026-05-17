@@ -51,3 +51,29 @@ This dataset is suitable for analyzing e-commerce website performance because it
 - Tables used: `ga_sessions_YYYYMMDD`
 - Example table: `ga_sessions_20170801`
 - Query pattern used in this project: `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+
+The dataset is organized as daily session tables. Each table represents website session data for one specific date.
+
+For example:
+
+- `ga_sessions_20170801` contains session data for August 1, 2017.
+- `ga_sessions_20170601` contains session data for June 1, 2017.
+
+In this project, wildcard tables such as `ga_sessions_2017*` are used to query multiple daily tables from 2017 at the same time.
+
+### How to Access the Data
+
+1. Log in to your Google Cloud Platform account.
+2. Open the BigQuery Console.
+3. In the Explorer panel, click **Add data**.
+4. Choose **Star a project by name** or search for a public project.
+5. Enter the project ID: `bigquery-public-data`.
+6. Open the dataset: `google_analytics_sample`.
+7. Select the daily session tables named `ga_sessions_YYYYMMDD`.
+8. For example, open `ga_sessions_20170801` to explore the table schema and sample data.
+
+In this project, the following wildcard table pattern is used to query multiple daily tables from 2017:
+
+```sql
+`bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+
