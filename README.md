@@ -226,9 +226,7 @@ ORDER BY revenue DESC;
 
 ![Revenue by Traffic Source Over Time](images/q03_revenue_by_traffic_source_over_time.png)
 
-#### Insight
-
-In June 2017, direct traffic generated the highest monthly revenue by a large margin, while Google was also an important revenue source. At the weekly level, revenue varied across traffic sources, showing that traffic source performance should be reviewed over time instead of only looking at the total monthly result.
+Insight : In June 2017, direct traffic generated the highest monthly revenue by a large margin, while Google was also an important revenue source. At the weekly level, revenue varied across traffic sources, showing that traffic source performance should be reviewed over time instead of only looking at the total monthly result.
 ---
 
 ### Query 04: Conversion Rate by Traffic Source
@@ -319,9 +317,7 @@ ORDER BY pd.month;
 
 ![Average Pageviews by Purchaser Type](images/q05_average_pageviews_by_purchaser_type.png)
 
-#### Insight
-
-Non-purchasers had higher average pageviews than purchasers in both June and July 2017. This may suggest that non-purchasing users spent more time browsing but did not convert, indicating a possible gap between product exploration and purchase decision.
+Insight : Non-purchasers had higher average pageviews than purchasers in both June and July 2017. This may suggest that non-purchasing users spent more time browsing but did not convert, indicating a possible gap between product exploration and purchase decision.
 ---
 
 ### Query 06: Average Transactions per Purchasing User
@@ -352,9 +348,7 @@ GROUP BY month;
 
 ![Average Transactions per Purchasing User](images/q06_average_transactions_per_purchasing_user.png)
 
-#### Insight
-
-In July 2017, purchasing users made an average of about 4.16 transactions. This suggests that users who converted were not limited to one-time purchases and may have shown repeat purchasing behavior within the period.
+Insight : In July 2017, purchasing users made an average of about 4.16 transactions. This suggests that users who converted were not limited to one-time purchases and may have shown repeat purchasing behavior within the period.
 
 ---
 
@@ -406,9 +400,7 @@ FROM raw_data;
 
 ![Revenue Contribution by Device Category](images/q07_revenue_contribution_by_device_category.png)
 
-#### Insight
-
-Desktop contributed the majority of total revenue, accounting for 96.14%, while mobile and tablet contributed only a small share. This suggests that desktop was the main revenue-driving device category, and mobile performance may need further review despite its role in e-commerce traffic.
+Insight : Desktop contributed the majority of total revenue, accounting for 96.14%, while mobile and tablet contributed only a small share. This suggests that desktop was the main revenue-driving device category, and mobile performance may need further review despite its role in e-commerce traffic.
 ---
 
 ### Query 08: Product Cross-Sell Analysis
@@ -453,9 +445,7 @@ ORDER BY quantity DESC;
 
 ![Product Cross-Sell Analysis](images/q08_product_cross_sell_analysis.png)
 
-#### Insight
-
-Google Sunglasses was the most commonly purchased product together with “YouTube Men's Vintage Henley”, with 20 units ordered. This suggests a possible cross-selling opportunity by recommending frequently co-purchased products to customers who view or buy the Henley product.
+Insight : Google Sunglasses was the most commonly purchased product together with “YouTube Men's Vintage Henley”, with 20 units ordered. This suggests a possible cross-selling opportunity by recommending frequently co-purchased products to customers who view or buy the Henley product.
 
 ---
 
@@ -529,9 +519,7 @@ ORDER BY pv.month;
 
 ![Product Funnel Analysis](images/q09_product_funnel_analysis.png)
 
-#### Insight
-
-Although product views fluctuated across the three months, both add-to-cart rate and purchase rate improved steadily from January to March 2017. March recorded the strongest funnel performance, with an add-to-cart rate of 37.29% and a purchase rate of 12.64%, suggesting improved conversion efficiency from product view to purchase.
+Insight : Although product views fluctuated across the three months, both add-to-cart rate and purchase rate improved steadily from January to March 2017. March recorded the strongest funnel performance, with an add-to-cart rate of 37.29% and a purchase rate of 12.64%, suggesting improved conversion efficiency from product view to purchase.
 
 ---
 
@@ -575,7 +563,5 @@ ORDER BY week;
 
 ![Weekly and Cumulative Revenue](images/q10_weekly_and_cumulative_revenue.png)
 
-#### Insight
-
-Cumulative revenue increased steadily from week 18 to week 31, reaching 425,257.70 by the end of the period. However, weekly revenue fluctuated across weeks, with week 29 generating the highest weekly revenue and week 31 showing the lowest weekly revenue among the displayed weeks.
+Insight : Cumulative revenue increased steadily from week 18 to week 31, reaching 425,257.70 by the end of the period. However, weekly revenue fluctuated across weeks, with week 29 generating the highest weekly revenue and week 31 showing the lowest weekly revenue among the displayed weeks.
 
