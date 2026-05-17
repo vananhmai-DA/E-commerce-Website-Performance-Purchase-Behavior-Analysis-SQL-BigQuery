@@ -79,13 +79,11 @@ In this project, the following wildcard table pattern is used to query multiple 
 
 ### Dataset Description
 
-The dataset contains e-commerce website session data, including visitor information, session date, traffic source, device category, pageviews, bounces, transactions, product interactions, product quantity, and product revenue.
+The dataset contains e-commerce website session data from the Google Analytics Sample Dataset in BigQuery. It includes information about visitors, session dates, traffic sources, device categories, pageviews, bounces, transactions, product interactions, product quantities, and product revenue.
 
-The dataset includes both session-level fields and nested e-commerce fields.
+The dataset contains both session-level data and nested e-commerce data. Session-level fields describe the overall visit, such as visitor ID, date, traffic source, device type, pageviews, bounces, and transactions. Nested fields provide more detailed information about user actions within each session, including product views, add-to-cart actions, purchases, and product-level revenue.
 
-Session-level fields describe the overall session, such as visitor ID, date, traffic source, device category, pageviews, bounces, and transactions.
-
-Nested fields describe more detailed user interactions within each session. In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` are nested or repeated fields. Therefore, `UNNEST()` is used to access hit-level and product-level data for analysis.
+In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` are nested or repeated fields. Therefore, `UNNEST()` is used in this project to access hit-level and product-level data for deeper e-commerce analysis.
 
 ### Key Fields Used
 
@@ -93,19 +91,15 @@ Nested fields describe more detailed user interactions within each session. In B
 |---|---|
 | `fullVisitorId` | Unique visitor ID |
 | `date` | Session date in `YYYYMMDD` format |
-| `totals` | A record field that contains aggregate values across the session |
-| `totals.bounces` | Bounce indicator. For a bounced session, the value is `1`; otherwise, it is `null` |
-| `totals.hits` | Total number of hits within the session |
-| `totals.pageviews` | Total number of pageviews within the session |
-| `totals.visits` | Number of sessions. The value is usually `1` for sessions with interaction events |
-| `totals.transactions` | Total number of e-commerce transactions within the session |
-| `trafficSource.source` | Source of website traffic, such as search engine, referring hostname, or UTM source |
-| `device.deviceCategory` | Device type, such as mobile, tablet, or desktop |
-| `hits` | A nested and repeated field that contains hit-level data within a session |
-| `hits.eCommerceAction` | A nested field that contains e-commerce actions during the session |
-| `hits.eCommerceAction.action_type` | E-commerce action type, such as product detail view, add-to-cart, checkout, or completed purchase |
-| `hits.product` | A nested field that contains product-level e-commerce data |
-| `hits.product.productQuantity` | Quantity of the product purchased |
+| `totals.visits` | Number of sessions |
+| `totals.pageviews` | Total number of pageviews in a session |
+| `totals.bounces` | Bounce indicator. A bounced session has the value `1`; otherwise, the value is `null` |
+| `totals.transactions` | Total number of e-commerce transactions in a session |
+| `trafficSource.source` | Source of website traffic, such as search engine, referral website, or campaign source |
+| `device.deviceCategory` | Device category, such as desktop, mobile, or tablet |
+| `hits` | Nested and repeated field that contains hit-level data within a session |
+| `hits.eCommerceAction.action_type` | E-commerce action type, such as product view, add-to-cart, checkout, or purchase |
+| `hits.product.productQuantity` | Quantity of products purchased |
 | `hits.product.productRevenue` | Product revenue, stored in micro-units |
 | `hits.product.productSKU` | Product SKU |
 | `hits.product.v2ProductName` | Product name |
