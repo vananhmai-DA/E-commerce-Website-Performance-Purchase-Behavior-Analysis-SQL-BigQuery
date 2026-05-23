@@ -11,7 +11,7 @@ This project analyzes e-commerce website performance using the Google Analytics 
 
 The analysis uses SQL to explore website traffic, user behavior, product interactions, conversion funnel, and revenue performance.
 
-### Business Questions
+### 📌 Business Questions
 
 - How did traffic, pageviews, and transactions change over time?
 - Which traffic sources generated better traffic quality and revenue?
@@ -19,7 +19,7 @@ The analysis uses SQL to explore website traffic, user behavior, product interac
 - Which devices and products contributed most to revenue?
 - Where do users drop off before purchase?
 
-### Project Value
+### 📌 Project Value
 
 This project turns raw web analytics data into business insights to support marketing, sales, and website performance decisions.
 
@@ -27,9 +27,9 @@ This project turns raw web analytics data into business insights to support mark
 
 This project uses the Google Analytics Sample Dataset from BigQuery Public Datasets.
 
-The dataset contains session-level and product-level data from the Google Merchandise Store, including website visits, traffic sources, user behavior, product interactions, transactions, and revenue.
+The dataset contains session-level and product-level data from the Google Merchandise Store, an e-commerce website that sells Google-branded merchandise. It includes website visits, traffic sources, user behavior, product interactions, transactions, and revenue.
 
-### Dataset Information
+### 📌 Dataset Information
 
 | Item | Description |
 |---|---|
@@ -41,35 +41,25 @@ The dataset contains session-level and product-level data from the Google Mercha
 | Example table | `ga_sessions_20170801` |
 | Query pattern | `bigquery-public-data.google_analytics_sample.ga_sessions_2017*` |
 
-The dataset is stored in daily session tables. In this project, wildcard tables are used to query multiple 2017 tables at the same time.
+The dataset is stored in daily session tables, where each table represents website session data for one specific date. In this project, wildcard tables are used to query multiple daily tables from 2017 at the same time.
 
-Example:
+### 📌 How to Access the Data
 
-```sql
-`bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
-
-### How to Access the Data
-
-To access the dataset in BigQuery:
-
-1. Log in to your Google Cloud Platform account.
-2. Open the BigQuery Console.
-3. In the Explorer panel, click **Add data**.
-4. Choose **Star a project by name** or search for a public project.
-5. Enter the project ID: `bigquery-public-data`.
-6. Open the dataset: `google_analytics_sample`.
-7. Select the daily session tables named `ga_sessions_YYYYMMDD`.
-8. For example, open `ga_sessions_20170801` to explore the schema and sample data.
+1. Log in to your Google Cloud Platform account and create a new project.
+2. Open the BigQuery Console and select your project.
+3. Click **Add data** in the Explorer panel, then choose **Star a project by name** or search for a public project.
+4. In the search bar, enter the project ID: `bigquery-public-data`.
+5. Open the dataset: `google_analytics_sample`.
+6. Select the daily session tables named `ga_sessions_YYYYMMDD`.
+7. For example, open the table `ga_sessions_20170801` to explore its structure and sample data.
 
 In this project, the following wildcard table pattern is used to query multiple daily tables from 2017:
 
-```sql
 `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
-```
 
 ## 3. Main Analysis Process
 
-### Query 01: Monthly Website Traffic Overview
+### 📌 Query 01: Monthly Website Traffic Overview
 
 #### Business Question
 
@@ -97,7 +87,7 @@ Insight: March 2017 showed the strongest performance among the three months, wit
 
 ---
 
-### Query 02: Bounce Rate by Traffic Source
+### 📌 Query 02: Bounce Rate by Traffic Source
 
 #### Business Question
 
@@ -124,7 +114,7 @@ Insight: Among the displayed traffic sources, `youtube.com` had the highest boun
 
 ---
 
-### Query 03: Revenue by Traffic Source Over Time
+### 📌 Query 03: Revenue by Traffic Source Over Time
 
 #### Business Question
 
@@ -175,7 +165,7 @@ Insight: In June 2017, direct traffic generated the highest monthly revenue by a
 
 ---
 
-### Query 04: Conversion Rate by Traffic Source
+### 📌 Query 04: Conversion Rate by Traffic Source
 
 #### Business Question
 
@@ -203,7 +193,7 @@ Insight: DFA had the highest conversion rate at 3%, followed by direct traffic a
 
 ---
 
-### Query 05: Average Pageviews by Purchaser Type
+### 📌 Query 05: Average Pageviews by Purchaser Type
 
 #### Business Question
 
@@ -254,7 +244,7 @@ Insight: Non-purchasers had higher average pageviews than purchasers in both Jun
 
 ---
 
-### Query 06: Average Transactions per Purchasing User
+### 📌 Query 06: Average Transactions per Purchasing User
 
 #### Business Question
 
@@ -282,7 +272,7 @@ Insight: In July 2017, purchasing users made an average of about 4.16 transactio
 
 ---
 
-### Query 07: Revenue Contribution by Device Category
+### 📌 Query 07: Revenue Contribution by Device Category
 
 #### Business Question
 
@@ -326,7 +316,7 @@ Insight: Desktop contributed the majority of total revenue, accounting for 96.14
 
 ---
 
-### Query 08: Product Cross-Sell Analysis
+### 📌 Query 08: Product Cross-Sell Analysis
 
 #### Business Question
 
@@ -368,7 +358,7 @@ Insight: Google Sunglasses was the most commonly purchased product together with
 
 ---
 
-### Query 09: Product Funnel Analysis
+### 📌 Query 09: Product Funnel Analysis
 
 #### Business Question
 
@@ -432,7 +422,7 @@ Insight: Although product views fluctuated across the three months, both add-to-
 
 ---
 
-### Query 10: Weekly and Cumulative Revenue
+### 📌 Query 10: Weekly and Cumulative Revenue
 
 #### Business Question
 
