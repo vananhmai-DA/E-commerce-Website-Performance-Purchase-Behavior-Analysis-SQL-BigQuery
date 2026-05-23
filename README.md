@@ -7,108 +7,112 @@
 
 ## 1. Project Overview
 
-### Context
+### 📌 Context
 
-This project analyzes e-commerce website data from the Google Analytics Sample Dataset in BigQuery. The dataset contains user sessions, traffic sources, device categories, pageviews, transactions, product interactions, and revenue.
+This project analyzes e-commerce website performance using the **Google Analytics Sample Dataset** in **BigQuery**.
 
-Using SQL, this project transforms raw web analytics data into structured analysis to better understand website performance and customer purchasing behavior.
+The dataset contains website session data, traffic sources, device categories, pageviews, transactions, product interactions, and revenue. Using SQL, the raw data is transformed into structured analysis to understand how users visit, browse, and purchase on an e-commerce website.
 
-### Business Problem
+### 🎯 Business Objective
 
-An e-commerce business needs to understand which traffic sources, customer behaviors, and product interactions contribute most to revenue. Without this analysis, it is difficult to evaluate marketing effectiveness, identify weak points in the customer journey, and find opportunities to improve conversion and sales.
+The main objective of this project is to evaluate website performance and customer purchasing behavior through key e-commerce metrics.
 
-This project answers the following key business questions:
+This analysis focuses on answering the following business questions:
 
-- How did website traffic, pageviews, and transactions change over time?
-- Which traffic sources brought high-quality traffic and revenue?
+- Which traffic sources bring the most visits, revenue, and conversions?
 - How do purchasers and non-purchasers behave differently?
-- Which devices and products contributed most to revenue?
-- Where do users drop off in the funnel from product view to purchase?
+- Which devices contribute most to revenue?
+- Which products create cross-selling opportunities?
+- Where do users drop off from product view to purchase?
 
-### Objectives
+### 💡 Project Value
 
-The objective of this project is to use SQL in BigQuery to measure and compare key e-commerce performance indicators.
+This project helps transform raw web analytics data into business insights that can support marketing, sales, and website performance decisions.
 
-The analysis includes:
+Key analysis areas include:
 
-- Traffic, pageview, and transaction trends
+- Traffic and transaction trends
 - Bounce rate and conversion rate by traffic source
-- Revenue by traffic source, week, month, and device category
+- Revenue performance by source, device, week, and month
 - Purchaser versus non-purchaser behavior
+- Product funnel performance
 - Product cross-selling opportunities
-- Product funnel performance from view to add-to-cart to purchase
-- Weekly and cumulative revenue trends
 
 
 ## 2. Data Source & Dataset Description
 
-### Data Source
+### 🗂️ Data Source
 
-This project uses the Google Analytics Sample Dataset available in BigQuery Public Datasets.
+This project uses the **Google Analytics Sample Dataset** from **BigQuery Public Datasets**.
 
-The dataset contains Google Analytics session data from the Google Merchandise Store, an e-commerce website that sells Google-branded merchandise. It provides information about website sessions, traffic sources, user behavior, product interactions, transactions, and revenue.
+The dataset contains Google Analytics session data from the **Google Merchandise Store**, an e-commerce website that sells Google-branded merchandise. It includes information about website sessions, traffic sources, user behavior, product interactions, transactions, and revenue.
 
-This dataset is suitable for analyzing e-commerce website performance because it includes both user session data and product-level e-commerce data.
+This dataset is suitable for e-commerce analysis because it provides both session-level data and product-level transaction data.
 
-### Dataset Information
+### 🧾 Dataset Information
 
-- Data source: Google Analytics Sample Dataset
-- BigQuery project: `bigquery-public-data`
-- Dataset: `google_analytics_sample`
-- Tables used: `ga_sessions_YYYYMMDD`
-- Example table: `ga_sessions_20170801`
-- Query pattern used in this project: `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+| Item | Description |
+|---|---|
+| Data source | Google Analytics Sample Dataset |
+| Platform | BigQuery Public Datasets |
+| Project ID | `bigquery-public-data` |
+| Dataset | `google_analytics_sample` |
+| Tables used | `ga_sessions_YYYYMMDD` |
+| Example table | `ga_sessions_20170801` |
+| Query pattern | `bigquery-public-data.google_analytics_sample.ga_sessions_2017*` |
 
-The dataset is organized as daily session tables. Each table represents website session data for one specific date.
+The dataset is stored in daily session tables. Each table represents website session data for one specific date.
 
 For example:
 
 - `ga_sessions_20170801` contains session data for August 1, 2017.
 - `ga_sessions_20170601` contains session data for June 1, 2017.
 
-In this project, wildcard tables such as `ga_sessions_2017*` are used to query multiple daily tables from 2017 at the same time.
+In this project, wildcard tables are used to query multiple daily tables from 2017 at the same time.
 
-### How to Access the Data
+### 🔗 How to Access the Data
+
+To access the dataset in BigQuery:
 
 1. Log in to your Google Cloud Platform account.
-2. Open the BigQuery Console.
+2. Open the **BigQuery Console**.
 3. In the Explorer panel, click **Add data**.
 4. Choose **Star a project by name** or search for a public project.
-5. Enter the project ID: `bigquery-public-data`.
-6. Open the dataset: `google_analytics_sample`.
-7. Select the daily session tables named `ga_sessions_YYYYMMDD`.
-8. For example, open `ga_sessions_20170801` to explore the table schema and sample data.
-
-In this project, the following wildcard table pattern is used to query multiple daily tables from 2017:
+5. Enter the project ID:
 
 ```sql
-`bigquery-public-data.google_analytics_sample.ga_sessions_2017*`
+bigquery-public-data
 ```
 
-### Dataset Description
+### 🔎 Dataset Description
 
-The dataset contains e-commerce website session data from the Google Analytics Sample Dataset in BigQuery. It includes information about visitors, session dates, traffic sources, device categories, pageviews, bounces, transactions, product interactions, product quantities, and product revenue.
+The dataset contains e-commerce website session data from the **Google Analytics Sample Dataset** in BigQuery.
 
-The dataset contains both session-level data and nested e-commerce data. Session-level fields describe the overall visit, such as visitor ID, date, traffic source, device type, pageviews, bounces, and transactions. Nested fields provide more detailed information about user actions within each session, including product views, add-to-cart actions, purchases, and product-level revenue.
+It includes information about visitors, session dates, traffic sources, device categories, pageviews, bounces, transactions, product interactions, product quantities, and product revenue.
 
-In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` are nested or repeated fields. Therefore, `UNNEST()` is used in this project to access hit-level and product-level data for deeper e-commerce analysis.
+The dataset includes both:
 
-### Key Fields Used
+- **Session-level data**: overall visit information such as visitor ID, date, traffic source, device type, pageviews, bounces, and transactions.
+- **Nested e-commerce data**: detailed user actions within each session, such as product views, add-to-cart actions, purchases, and product-level revenue.
+
+In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` are nested or repeated fields. Therefore, `UNNEST()` is used to access hit-level and product-level data for deeper e-commerce analysis.
+
+### 🧩 Key Fields Used
 
 | Field Name | Description |
 |---|---|
 | `fullVisitorId` | Unique visitor ID |
 | `date` | Session date in `YYYYMMDD` format |
 | `totals.visits` | Number of sessions |
-| `totals.pageviews` | Total number of pageviews in a session |
-| `totals.bounces` | Bounce indicator. A bounced session has the value `1`; otherwise, the value is `null` |
-| `totals.transactions` | Total number of e-commerce transactions in a session |
-| `trafficSource.source` | Source of website traffic, such as search engine, referral website, or campaign source |
+| `totals.pageviews` | Total pageviews in a session |
+| `totals.bounces` | Bounce indicator |
+| `totals.transactions` | Number of e-commerce transactions |
+| `trafficSource.source` | Source of website traffic |
 | `device.deviceCategory` | Device category, such as desktop, mobile, or tablet |
-| `hits` | Nested and repeated field that contains hit-level data within a session |
+| `hits` | Nested field containing hit-level data within a session |
 | `hits.eCommerceAction.action_type` | E-commerce action type, such as product view, add-to-cart, checkout, or purchase |
 | `hits.product.productQuantity` | Quantity of products purchased |
-| `hits.product.productRevenue` | Product revenue, stored in micro-units |
+| `hits.product.productRevenue` | Product revenue stored in micro-units |
 | `hits.product.productSKU` | Product SKU |
 | `hits.product.v2ProductName` | Product name |
 
@@ -119,10 +123,6 @@ In BigQuery, fields such as `hits`, `hits.eCommerceAction`, and `hits.product` a
 #### Business Question
 
 How did total visits, pageviews, and transactions change across January, February, and March 2017?
-
-#### Approach
-
-This query groups website session data by month and calculates total visits, pageviews, and transactions. The purpose is to compare traffic volume, user engagement, and purchasing activity across January, February, and March 2017.
 
 #### SQL Query
 
@@ -152,14 +152,6 @@ Insight: March 2017 showed the strongest performance among the three months, wit
 
 Which traffic sources had the highest bounce rate in July 2017?
 
-#### Metric Definition
-
-Bounce rate = total bounces / total visits
-
-#### Approach
-
-This query groups July 2017 sessions by traffic source and calculates total visits, total bounces, and bounce rate. The purpose is to identify which traffic sources brought visitors who left the website quickly without deeper engagement.
-
 #### SQL Query
 
 ```sql
@@ -186,10 +178,6 @@ Insight: Among the displayed traffic sources, `youtube.com` had the highest boun
 #### Business Question
 
 How much revenue did each traffic source generate by week and by month in June 2017?
-
-#### Approach
-
-This query calculates product revenue by traffic source in June 2017 at both monthly and weekly levels. It uses `UNNEST()` to access product-level revenue from nested fields, then combines monthly and weekly revenue results using `UNION ALL`.
 
 #### SQL Query
 
@@ -242,14 +230,6 @@ Insight: In June 2017, direct traffic generated the highest monthly revenue by a
 
 Which traffic sources had the highest conversion rate in 2017?
 
-#### Metric Definition
-
-Conversion rate = total transactions / total visits
-
-#### Approach
-
-This query groups 2017 sessions by traffic source and calculates total visits, transactions, and conversion rate. The `HAVING` condition keeps only sources with at least 50 transactions, so the comparison focuses on traffic sources with meaningful purchase volume.
-
 #### SQL Query
 
 ```sql
@@ -277,10 +257,6 @@ Insight: DFA had the highest conversion rate at 3%, followed by direct traffic a
 #### Business Question
 
 How did average pageviews differ between purchasers and non-purchasers in June and July 2017?
-
-#### Approach
-
-This query separates visitors into purchasers and non-purchasers. It calculates average pageviews per visitor for each group in June and July 2017, then joins both results by month to compare engagement between users who purchased and users who did not.
 
 #### SQL Query
 
@@ -333,10 +309,6 @@ Insight: Non-purchasers had higher average pageviews than purchasers in both Jun
 
 How many transactions did each purchasing user make on average in July 2017?
 
-#### Approach
-
-This query focuses on visitors who completed at least one transaction in July 2017. It calculates the average number of transactions per purchasing user by dividing total transactions by the number of distinct visitors who made purchases.
-
 #### SQL Query
 
 ```sql
@@ -364,14 +336,6 @@ Insight: In July 2017, purchasing users made an average of about 4.16 transactio
 #### Business Question
 
 Which device categories contributed the most to total revenue?
-
-#### Metric Definition
-
-Revenue contribution = device revenue / total revenue
-
-#### Approach
-
-This query calculates revenue by device category and compares each device’s revenue with total revenue. The purpose is to understand which device categories contributed the largest share of e-commerce revenue.
 
 #### SQL Query
 
@@ -417,10 +381,6 @@ Insight: Desktop contributed the majority of total revenue, accounting for 96.14
 
 Which other products were commonly purchased by customers who bought "YouTube Men's Vintage Henley" in July 2017?
 
-#### Approach
-
-This query first identifies visitors who purchased “YouTube Men's Vintage Henley” in July 2017. It then finds other products purchased by the same visitors and ranks those products by quantity sold. This helps identify potential cross-selling opportunities.
-
 #### SQL Query
 
 ```sql
@@ -462,16 +422,6 @@ Insight: Google Sunglasses was the most commonly purchased product together with
 #### Business Question
 
 How did users move through the product funnel from product view to add-to-cart to purchase in January, February, and March 2017?
-
-#### Metric Definitions
-
-Add-to-cart rate = number of products added to cart / number of product views
-
-Purchase rate = number of products purchased / number of product views
-
-#### Approach
-
-This query measures the product funnel across three stages: product view, add-to-cart, and purchase. It counts the number of product SKUs at each stage by month, then calculates add-to-cart rate and purchase rate based on product views.
 
 #### SQL Query
 
@@ -536,10 +486,6 @@ Insight: Although product views fluctuated across the three months, both add-to-
 #### Business Question
 
 How did weekly revenue and cumulative revenue change from May to July 2017?
-
-#### Approach
-
-This query calculates weekly revenue from May to July 2017 using product-level revenue data. It then uses a window function to calculate cumulative revenue over time, making it possible to track both weekly revenue movement and total revenue growth.
 
 #### SQL Query
 
