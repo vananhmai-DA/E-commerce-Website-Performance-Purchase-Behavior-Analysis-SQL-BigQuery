@@ -468,7 +468,7 @@ ORDER BY month;
 
 #### Query Result
 
-![Weekly and Cumulative Revenue](images/Q10_weekly_cumulative_revenue.png)
+![Weekly and Cumulative Revenue](images/Q10_monthly_cumulative_revenue.png)
 
 Insight: Revenue decreased steadily from April to June 2017. April generated the highest revenue, contributing 45.75% of total revenue in the three-month period. By the end of May, cumulative revenue had already reached 73.71%, while June contributed the remaining 26.29%. This suggests that revenue performance was strongest at the beginning of Q2 and weakened slightly toward the end of the quarter.
 
