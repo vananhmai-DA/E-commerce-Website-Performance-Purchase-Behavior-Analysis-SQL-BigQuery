@@ -476,16 +476,18 @@ Insight: Revenue decreased steadily from April to June 2017. April generated the
 
 ### Key Insights
 
-- March 2017 had the strongest performance, with the highest visits, pageviews, transactions, and purchase rate.
-- High traffic volume did not always mean high quality. Google had high visits but also a relatively high bounce rate, while DFA had the highest conversion rate.
-- Direct traffic generated the highest revenue, and desktop contributed most of the total revenue.
-- Non-purchasers viewed more pages than purchasers, suggesting that some users browsed products but did not complete a purchase.
-- Customers who bought “YouTube Men's Vintage Henley” also commonly purchased Google Sunglasses, showing a cross-selling opportunity.
+- March 2017 showed the strongest overall performance, with the highest visits, pageviews, transactions, and purchase rate.
+- High traffic did not always lead to high-quality performance. Google generated high visits but also had a relatively high bounce rate, while DFA achieved the highest conversion rate.
+- Revenue performance weakened during Q2. April contributed the largest share of revenue from April to June, accounting for 45.75% of the three-month total.
+- Direct traffic generated the highest revenue, while desktop users contributed most of the total revenue.
+- Non-purchasers viewed more pages than purchasers, suggesting that some users were interested in products but did not complete the purchase.
+- Customers who bought “YouTube Men's Vintage Henley” also commonly purchased Google Sunglasses, showing a potential cross-selling opportunity.
 
 ### Recommendations
 
-- Evaluate traffic sources by bounce rate, conversion rate, and revenue, not only by visits.
-- Improve landing pages for high-bounce traffic sources.
-- Optimize the purchase journey for users who browse many pages but do not buy.
-- Review mobile and tablet experience because desktop generated most revenue.
-- Use product recommendations to increase cross-selling and average order value.
+- Evaluate traffic sources based on conversion rate, bounce rate, and revenue, not only visit volume.
+- Improve landing pages and campaign quality for high-traffic sources with high bounce rates.
+- Investigate the purchase journey to understand why users browse many pages but do not complete transactions.
+- Review the mobile and tablet experience because desktop currently contributes most revenue.
+- Use product recommendation strategies to increase cross-selling and average order value.
+- Analyze the reasons behind the revenue decline from April to June and identify whether it came from traffic, conversion rate, or product performance.
