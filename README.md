@@ -422,43 +422,55 @@ Insight: Although product views fluctuated across the three months, both add-to-
 
 ---
 
-### 📌 Query 10: Weekly and Cumulative Revenue
+### 📌 Query 10: Monthly and Cumulative Revenue
 
 #### Business Question
 
-How did weekly revenue and cumulative revenue change from May to July 2017?
+How did monthly revenue and cumulative revenue change from April to June 2017?
 
 #### SQL Query
 
 ```sql
-WITH 
-raw_data AS ( 
+WITH raw_data AS ( 
   SELECT
-    FORMAT_DATE("%Y-%W", PARSE_DATE("%Y%m%d", date)) AS week
-    ,SUM(p.productRevenue)/1000000 AS weekly_revenue
+    FORMAT_DATE("%Y-%m", PARSE_DATE("%Y%m%d", date)) AS month,
+    SUM(p.productRevenue) / 1000000 AS monthly_revenue
   FROM
     `bigquery-public-data.google_analytics_sample.ga_sessions_2017*`,
-  UNNEST(hits) hits,
-      UNNEST(product) p
-  WHERE _table_suffix BETWEEN '0501' AND '0731'
-  AND p.productRevenue IS NOT NULL
-  GROUP BY week
-  ORDER BY week
+    UNNEST(hits) AS hits,
+    UNNEST(hits.product) AS p
+  WHERE _table_suffix BETWEEN '0401' AND '0630'
+    AND p.productRevenue IS NOT NULL
+  GROUP BY month
+),
+
+final AS (
+  SELECT
+    month,
+    monthly_revenue,
+    SUM(monthly_revenue) OVER (
+      ORDER BY month
+      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS cumulative_revenue,
+    SUM(monthly_revenue) OVER () AS total_revenue
+  FROM raw_data
 )
+
 SELECT
-  week
-  ,weekly_revenue
-  ,SUM(weekly_revenue) OVER(ORDER BY week
-                           ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) As cumulative_revenue
-FROM raw_data
-ORDER BY week;
+  month,
+  monthly_revenue,
+  cumulative_revenue,
+  ROUND(monthly_revenue / total_revenue * 100, 2) AS monthly_revenue_pct,
+  ROUND(cumulative_revenue / total_revenue * 100, 2) AS cumulative_revenue_pct
+FROM final
+ORDER BY month;
 ```
 
 #### Query Result
 
 ![Weekly and Cumulative Revenue](images/Q10_weekly_cumulative_revenue.png)
 
-Insight: Cumulative revenue increased steadily from week 18 to week 31, reaching 425,257.70 by the end of the period. However, weekly revenue fluctuated across weeks, with week 29 generating the highest weekly revenue and week 31 showing the lowest weekly revenue among the displayed weeks.
+Insight: Revenue decreased steadily from April to June 2017. April generated the highest revenue, contributing 45.75% of total revenue in the three-month period. By the end of May, cumulative revenue had already reached 73.71%, while June contributed the remaining 26.29%. This suggests that revenue performance was strongest at the beginning of Q2 and weakened slightly toward the end of the quarter.
 
 ## 4. Summary & Recommendations
 
